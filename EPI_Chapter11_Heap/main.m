@@ -13,13 +13,8 @@ void sortKSortedArray(NSUInteger k, NSMutableArray *arrayToSort);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSMutableArray *arrayToSort = [@[@"C", @"A", @"B", @"F", @"D", @"E", @"G"] mutableCopy];
         
-        sortKSortedArray(2, arrayToSort);
-        
-        NSLog(@"Sorted Array is %@",arrayToSort); //A, B, C, D, E, F, G
-        
+        //Max heap example
         Heap <NSNumber *> *numbers = [[Heap alloc] initMaxHeapWithArray:@[@2,@1,@(-1),@3, @(4)]];
         NSLog(@"%@",[numbers pop]); //4
         NSLog(@"%@",[numbers pop]); //3
@@ -27,8 +22,12 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@",[numbers pop]); //2
         [numbers insert:@(10)];
         NSLog(@"%@",[numbers pop]);//10
-        NSLog(@"%@",[numbers peek]);//1
-        
+        NSLog(@"%@",[numbers pop]);//1
+        NSLog(@"%@",[numbers pop]);//-1
+        NSLog(@"%@",[numbers pop]);//-10
+        //NSLog(@"%@",[numbers pop]);//Uncomment to test Exception
+
+        //Min Heap example
         Heap <NSString *> *letters = [[Heap alloc] initWithArray:@[@"C", @"A", @"B", @"F", @"D", @"E", @"G"]];
         NSLog(@"%@",[letters pop]);//A
         NSLog(@"%@",[letters pop]);//B
@@ -36,6 +35,12 @@ int main(int argc, const char * argv[]) {
         NSLog(@"%@",[letters pop]);//C
         [letters insert:@"A"];
         NSLog(@"%@",[letters peek]);//A
+        
+        //This function that sloves EPI example has Heap with max size example
+        NSMutableArray *arrayToSort = [@[@"C", @"A", @"B", @"F", @"D", @"E", @"G"] mutableCopy];
+        sortKSortedArray(2, arrayToSort);
+        NSLog(@"Sorted Array is %@",arrayToSort); //A, B, C, D, E, F, G
+
     }
     return 0;
 }

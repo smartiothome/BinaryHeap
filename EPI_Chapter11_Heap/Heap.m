@@ -104,11 +104,15 @@
 
 - (id) peek
 {
+    if ([self.heap count] == 0)
+        [NSException raise:@"ASBInaryHeapError" format:@"peek called when heap has no elements"];
     return self.heap[0];
 }
 
 - (id) pop
 {
+    if ([self.heap count] == 0)
+        [NSException raise:@"ASBInaryHeapError" format:@"pop called when heap has no elements"];
     id valueToReturn = self.heap[0];
     
     self.heap[0] = [self.heap lastObject];
